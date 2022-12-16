@@ -1,13 +1,13 @@
 import { useState } from "react";
 
-
 const regalosBase = {
     regalos : "",
-    cantidad : ""
+    cantidad : "",
+    id : null
 }
 
 export function Challenge ()  {
-    const [info, setInfo] = useState(["Messi gane el mundial"])
+    const [info, setInfo] = useState([])
     const [gift, setGift] = useState(regalosBase)
    
 
@@ -24,8 +24,9 @@ export function Challenge ()  {
             alert("Completa el campo para poder agregar regalos")
             return;
         }
+        gift.id = Date.now()
         setInfo([...info, gift])
-        setGift("");
+        setGift(regalosBase)
     }
 
     const filterGift = (deleteInfo) => {
@@ -38,13 +39,13 @@ export function Challenge ()  {
 
     return (
         <div className="app">
-         <h1>Regalos</h1>
+         <h1>Lista de Regalos</h1>
 
     <ul>  
          { info.length > 0 ? (
 
          info.map(el => (
-        <li key={el} >  { el.regalos } {`Cantidad: ${el.cantidad}`}
+        <li key={el.id} >  { el.regalos } {`Cantidad: ${el.cantidad}`}
         <button className="button__eliminar" onClick={() => filterGift(el)}>X</button>
         </li>
           

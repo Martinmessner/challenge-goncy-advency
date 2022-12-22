@@ -1,15 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const regalosBase = {
     regalos : "",
     cantidad : "",
-    id : null
+    id : null,
+    url : ""
 }
 
+const infoLocalStorage = JSON.parse(localStorage.getItem("info"));
+
 export function Challenge ()  {
-    const [info, setInfo] = useState([])
+    const [info, setInfo] = useState(infoLocalStorage)
     const [gift, setGift] = useState(regalosBase)
    
+    useEffect(() => {
+        localStorage.setItem("info", JSON.stringify(info))
+     }, [info]);
 
     const handlechange = (e) =>  {
         setGift({
@@ -24,7 +30,7 @@ export function Challenge ()  {
             alert("Completa el campo para poder agregar regalos")
             return;
         }
-        gift.id = Date.now()
+        if (gift.id === null) gift.id = Date.now();
         setInfo([...info, gift])
         setGift(regalosBase)
     }
@@ -45,7 +51,8 @@ export function Challenge ()  {
          { info.length > 0 ? (
 
          info.map(el => (
-        <li key={el.id} >  { el.regalos } {`Cantidad: ${el.cantidad}`}
+        <li key={el.id} >  { el.regalos } {`Cantidad: ${el.cantidad}`} 
+              <img className="imagenagregada__enreact" alt="imagen" src={el.url}  />        
         <button className="button__eliminar" onClick={() => filterGift(el)}>X</button>
         </li>
           
@@ -59,6 +66,7 @@ export function Challenge ()  {
             <form onSubmit={handleSubmit}>
                 <input name="regalos" value={gift.regalos} onChange={handlechange} type="text"></input>
                 <input className="input__cantidad" name="cantidad" type="number" value={gift.cantidad} onChange={handlechange} placeholder="Cantidad"  />
+                <input name="url" value={gift.url} onChange={handlechange} type="url" placeholder="https://example.com"/>
                 <button type="submit">Agregar Regalos</button>
             </form>
                 <button onClick={deleteAllGifts}>Borrar Todo</button>

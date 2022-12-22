@@ -52,3 +52,10 @@ button, input {
   padding: .2em;
   font-weight: 700;
 }
+
+.imagenagregada__enreact {
+  width: 150px;
+  display: flex;
+  margin: auto;
+  object-fit: contain;
+}

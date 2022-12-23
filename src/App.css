@@ -12,9 +12,6 @@ ul, li {
   text-align: center;
   color: #dddddd;
   font-size: 1.5em;
-  font-weight: 700;
-  margin: auto;
-  padding: 1em;
 }
 
 .button__eliminar {
@@ -43,7 +40,7 @@ button {
 button, input {
   color: #000000;
   background-color: aqua;
-  padding: .2em;
+  padding: .3em;
   font-weight: 700;
 }
 
@@ -52,4 +49,15 @@ button, input {
   display: flex;
   margin: auto;
   object-fit: contain;
+}
+
+.modal-overlay {
+  background-color: rgb(255, 0, 0);
+  padding: 20px;
+  position: absolute;
+}
+
+.modal-content {
+  background-color: yellow;
+  padding: 20px;
 }

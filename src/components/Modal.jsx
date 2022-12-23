@@ -1,28 +1,34 @@
-import React from 'react';
-import Modal from 'react-modal';
+import { useState } from 'react';
 
-Modal.setAppElement("#root");
+function Modal({ isOpen, onRequestClose, children }) {
+  if (!isOpen) {
+    return null;
+  }
 
-export function ModalAddItem({handleSubmit, handlechange, deleteAllGifts, gift}) {
-  const [modalIsOpen, setIsOpen] = React.useState(false);
+return (
+  <div className="modal-overlay">
+    <div className="modal-content">
+         {children}
+      <button onClick={onRequestClose}>Cerrar</button>
+    </div>
+  </div>
+);
+}
+
+export function ModalAddItem({handleSubmit, handlechange, gift}) {
+  const [modalIsOpen, setIsOpen] = useState(false);
 
   return (
     <div>
-      <button onClick={() => setIsOpen(true)}>Open Modal</button>
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={setIsOpen}
-      >
-        <h2>Hello</h2>
-        <button onClick={() => setIsOpen(false)}>close</button>
+       <button onClick={() => setIsOpen(true)}>Agregar Regalos</button>
+      <Modal isOpen={modalIsOpen} onRequestClose={() => setIsOpen(false)}>
           <form onSubmit={handleSubmit}>
-                <input name="regalos" value={gift.regalos} onChange={handlechange} type="text"></input>
-                <input className="input__cantidad" name="cantidad" type="number" value={gift.cantidad} onChange={handlechange} placeholder="Cantidad"  />
-                <input name="url" value={gift.url} onChange={handlechange} type="url" placeholder="https://example.jpeg o PNG"/>
+                <input name="regalos" value={gift.regalos} onChange={handlechange} type="text" autoComplete='off' placeholder='Regalo'></input>
+                <input className="input__cantidad" name="cantidad" autoComplete='off' type="number" value={gift.cantidad} onChange={handlechange} placeholder="Cantidad"  />
+                <input name="url" value={gift.url} onChange={handlechange} type="url" placeholder="URL de Imagen"/>
                 <button type="submit">Agregar Regalos</button>
             </form>
-                <button onClick={deleteAllGifts}>Borrar Todo</button>
-        
+             
       </Modal>
     </div>
   );

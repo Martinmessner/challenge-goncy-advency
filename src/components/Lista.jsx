@@ -48,13 +48,14 @@ export function Challenge ()  {
         <div className="app">
          <h1>Lista de Regalos</h1>
 
-        
                 { info.length > 0 ? (
 
                      info.map(el => (
-        <ul>  
+        <ul key={el.id}>  
 
-        <li key={el.id} > <h2> { el.regalos } </h2>  {`Cantidad: ${el.cantidad}`} 
+        <li> 
+            <h2> { el.regalos } </h2>  
+            {`Cantidad: ${el.cantidad}`} 
          <img className="imagenagregada__enreact" alt="imagen" src={el.url}  />        
         <button className="button__eliminar" onClick={() => filterGift(el)}>X</button>
         </li>
@@ -65,10 +66,9 @@ export function Challenge ()  {
                     <h1>Agregue nuevos regalos</h1>
         </div>
             }
-        
-           
                 <div>
-                <ModalAddItem handleSubmit={handleSubmit} handlechange={handlechange} deleteAllGifts={deleteAllGifts} gift={gift} />
+                <ModalAddItem handleSubmit={handleSubmit} handlechange={handlechange} gift={gift} />
+                <button onClick={deleteAllGifts}>Borrar Todo</button>
                 </div>
         </div>
         

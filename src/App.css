@@ -8,6 +8,11 @@ ul, li {
   list-style: none;
 }
 
+.contenedor__padre {
+  max-height: 100vh;
+  overflow: auto;
+}
+
 .app {
   text-align: center;
   color: #dddddd;
@@ -29,17 +34,12 @@ body {
   background-position: center top;
 }
 
-.input__cantidad {
-  width: 6em;
-}
-
 button {
   cursor: pointer;
 }
 
 button, input {
   color: #000000;
-  background-color: aqua;
   padding: .3em;
   font-weight: 700;
 }
@@ -51,13 +51,29 @@ button, input {
   object-fit: contain;
 }
 
-.modal-overlay {
-  background-color: rgb(255, 0, 0);
+.modal__overlay {
   padding: 20px;
   position: absolute;
+  top: 6em;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 15em;
+  width: 30em;
+  margin: auto;
 }
 
-.modal-content {
-  background-color: yellow;
+.modal__content {
+  background-color: black;
   padding: 20px;
+}
+
+.modal__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal__form--input {
+    margin: 4px auto;
+    width: 50%;
 }

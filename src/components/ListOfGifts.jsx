@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import CrossIcon from "../images/Iconsvg";
 import { ModalAddItem } from "./Modal";
 
 const regalosBase = {
@@ -37,6 +38,10 @@ export function Challenge ()  {
         setGift(regalosBase)
     }
 
+    const handleEditGift = () => {
+        console.log("Editar Regalo")
+    }
+
     const filterGift = (deleteInfo) => {
         setInfo(info.filter( (info) => info !== deleteInfo))
     }
@@ -54,12 +59,16 @@ export function Challenge ()  {
                          info.map(el => (
                          <ul key={el.id}>  
 
-        <li> 
-                        <h2> { el.regalos } </h2>  
-                       {`Cantidad: ${el.cantidad}`} 
-                        <p> {el.destinatario} </p>
-                       <img className="imagenagregada__enreact" alt="imagen" src={el.url}  />        
-                       <button className="button__eliminar" onClick={() => filterGift(el)}>X</button>
+        <li className="li__regalos"> 
+
+        <img className="imagenagregada__enreact" alt="imagen" src={el.url}/>
+                       <h2>{ el.regalos }</h2>
+                       {`Cantidad: ${el.cantidad}`}
+                       <p>{el.destinatario}</p>
+            <div>
+                       <button className="button__eliminar" onClick={() => filterGift(el)}><CrossIcon /></button>
+                       <button onClick={() => handleEditGift(el)}>Editar Regalo</button> 
+            </div>
         </li>
         
         </ul>

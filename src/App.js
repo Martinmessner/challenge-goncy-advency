@@ -1,5 +1,5 @@
 import './App.css';
-import { Challenge } from './components/Lista';
+import { Challenge } from './components/ListOfGifts';
 
 
 function App() {

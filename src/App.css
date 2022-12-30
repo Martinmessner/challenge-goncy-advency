@@ -51,18 +51,15 @@ button, input {
 
 .imagenagregada__enreact {
   width: 150px;
-  
 }
 
 .modal__overlay {
   padding: 20px;
   position: absolute;
-  top: 6em;
+  top: 2em;
   left: 0;
   right: 0;
   bottom: 0;
-  height: 15em;
-  width: 30em;
   margin: auto;
 }
 

@@ -29,8 +29,6 @@ export function Challenge ()  {
         localStorage.setItem("info", JSON.stringify(info))
      }, [info]);
 
-
-     
     const handlechange = (e) =>  {
         setGift({
             ...gift,
@@ -62,7 +60,6 @@ export function Challenge ()  {
     const updateGift = (data) => {
 		setInfo(info.map(gift => gift.id === data.id ? data : gift));
         setEditDataGift(data)
-        console.log(data)
 	}
 
     const filterGift = (deleteInfo) => {

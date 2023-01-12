@@ -16,7 +16,7 @@ return (
 );
 }
 
-export function ModalAddItem({handleSubmit, handlechange, gift, editDataGift}) {
+export function ModalAddItem({handleSubmit, handlechange, gift, editDataGift, onRequestClose}) {
   const [modalIsOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -28,7 +28,6 @@ export function ModalAddItem({handleSubmit, handlechange, gift, editDataGift}) {
   }, [editDataGift])
 
   return (
-
     <div>
 
        <button onClick={() => setIsOpen(true)}>Agregar Regalo </button>
@@ -39,7 +38,7 @@ export function ModalAddItem({handleSubmit, handlechange, gift, editDataGift}) {
 
                 <input className='modal__form--input' name="regalos" 
                 value={gift.regalos} onChange={handlechange} type="text" 
-                autoComplete='off' placeholder='Regalo'></input>
+                autoComplete='off' placeholder='Nombre del Regalo'></input>
 
                 <input className='modal__form--input' name="cantidad" 
                 autoComplete='off' type="number" value={gift.cantidad} 
@@ -51,7 +50,10 @@ export function ModalAddItem({handleSubmit, handlechange, gift, editDataGift}) {
                 <input className='modal__form--input' name="url" value={gift.url}
                  onChange={handlechange} type="url" placeholder="URL de Imagen"/>
 
-                <button className='modal__form--input' type="submit">{editDataGift ? "Editar Regalo" : "Agregar Regalo"}</button>
+                <button className='modal__form--input'>
+                  {editDataGift ? "Aplicar Cambios para Continuar" : "Agregar Regalo"}
+                </button>
+             
             </form>
       </Modal>
     </div>

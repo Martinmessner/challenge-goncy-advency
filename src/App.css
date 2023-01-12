@@ -11,7 +11,7 @@ ul, li {
 
 .li__regalos {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   padding: .5em 0em;
 }
@@ -24,7 +24,7 @@ ul, li {
 .app {
   text-align: center;
   color: #dddddd;
-  font-size: 1.5em;
+  font-size: 1.3em;
 }
 
 .button__eliminar {

@@ -16,16 +16,18 @@ export const ListMapGifts = ({info, updateGift, filterGift}) => {
             <li className="li__regalos"> 
     
             <img className="imagenagregada__enreact" alt="imagen" src={el.url}/>
-                           <p>{ el.regalos }</p>
-                           <p>{`Cantidad: ${el.cantidad}`}</p> 
-                           <p>{el.destinatario}</p>
-                     <div>
-                           <button className="button__eliminar" onClick={() => filterGift(el)}><CrossIcon /></button>
-                           <button className="button__eliminar" onClick={() => updateGift(el)}> <EditNote /> </button> 
-                           
-                    </div>
+
+            <div>
+                 <p>{ el.regalos }</p>
+                 <small>Para: {el.destinatario}</small>
+            </div>
+
+                  <small>Cantidad: {el.cantidad}</small> 
+            <div>
+                <button className="button__eliminar" onClick={() => filterGift(el)}><CrossIcon /></button>
+                <button className="button__eliminar" onClick={() => updateGift(el)}><EditNote /></button>     
+            </div>
             </li>
-            
             </ul>
             )) ) :
             <div>

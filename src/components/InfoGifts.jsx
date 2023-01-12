@@ -1,6 +1,6 @@
 import CrossIcon from "../images/Iconsvg";
 
-export const ListMapGifts = ({info, handleEditGift, filterGift}) => {
+export const ListMapGifts = ({info, updateGift, filterGift, setEditDataGift}) => {
 
     return (
 
@@ -20,7 +20,8 @@ export const ListMapGifts = ({info, handleEditGift, filterGift}) => {
                            <p>{el.destinatario}</p>
                      <div>
                            <button className="button__eliminar" onClick={() => filterGift(el)}><CrossIcon /></button>
-                           <button onClick={() => handleEditGift(el)}>Editar Regalo</button> 
+                           <button onClick={() => updateGift(el)}>Editar Regalo</button> 
+                           
                     </div>
             </li>
             

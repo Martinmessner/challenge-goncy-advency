@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
+import { EdiItem } from "./EditModal";
 import { ListMapGifts } from "./InfoGifts";
-import { ModalAddItem } from "./Modal"
+import {  ModalAddItem } from "./AddModalItem"
 
 const regalosBase = {
     regalos : "",
@@ -18,15 +19,30 @@ export function Challenge ()  {
     const [editDataGift, setEditDataGift] = useState(null)
    
     useEffect(() => {
+        if (editDataGift) {
+            setGift(editDataGift)
+        } else {
+            setGift(regalosBase)
+        }
+      }, [editDataGift])
+
+    useEffect(() => {
         localStorage.setItem("info", JSON.stringify(info))
      }, [info]);
 
+
+     
     const handlechange = (e) =>  {
         setGift({
             ...gift,
             [e.target.name]:e.target.value,
           });
     }
+
+    const addData = (gift) => {
+        gift.id = Date.now()
+        setInfo([...info, gift])
+      }
     
     const handleSubmit = (e) =>  {
         e.preventDefault();
@@ -34,16 +50,21 @@ export function Challenge ()  {
             alert("No has puesto ningun regalo o la cantidad es un numero invalido!")
             return;
         }
-        if (gift.id === null) gift.id = Date.now();
-        setInfo([...info, gift])
+
+        if (gift.id === null) {
+            addData(gift)
+        } else {
+            updateGift(gift)
+        }
         setGift(regalosBase)
+        setEditDataGift(null)
     }
 
-    const handleEditGift = (editGift) => {
-        console.log(editGift)
-        
-        console.log(editDataGift)
-    }
+    const updateGift = (data) => {
+		setInfo(info.map(gift => gift.id === data.id ? data : gift));
+        setEditDataGift(data)
+        console.log(data)
+	}
 
     const filterGift = (deleteInfo) => {
         setInfo(info.filter( (info) => info !== deleteInfo))
@@ -56,10 +77,26 @@ export function Challenge ()  {
     return (
         <div className="app">
 
-        <ListMapGifts  deleteAllGifts={deleteAllGifts} filterGift={filterGift}  handleSubmit={handleSubmit} 
-         handleEditGift={handleEditGift} handlechange={handlechange} gift={gift}  info={info} />
-        <ModalAddItem handleSubmit={handleSubmit} handlechange={handlechange} gift={gift} />
-        <button onClick={deleteAllGifts}>Borrar Todo</button>
+        <ListMapGifts deleteAllGifts={deleteAllGifts} filterGift={filterGift}  handleSubmit={handleSubmit} 
+         updateGift={updateGift} handlechange={handlechange} gift={gift}  info={info} 
+         />
+        <ModalAddItem 
+        setEditDataGift={setEditDataGift}
+        handleSubmit={handleSubmit}
+        updateGift={updateGift}
+        handlechange={handlechange}
+        gift={gift}
+         />
+
+        <button
+         onClick={deleteAllGifts}>Borrar Todo</button>
+       
+       <EdiItem 
+        setEditDataGift={setEditDataGift}
+       handleSubmit={handleSubmit} 
+       handlechange={handlechange} 
+       gift={gift} 
+       info={info} />
                     
         </div>
         

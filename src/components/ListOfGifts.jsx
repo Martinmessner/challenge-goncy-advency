@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { EdiItem } from "./EditModal";
 import { ListMapGifts } from "./InfoGifts";
 import {  ModalAddItem } from "./AddModalItem"
 
@@ -90,13 +89,6 @@ export function Challenge ()  {
 
         <button
          onClick={deleteAllGifts}>Borrar Todo</button>
-       
-       <EdiItem 
-        setEditDataGift={setEditDataGift}
-       handleSubmit={handleSubmit} 
-       handlechange={handlechange} 
-       gift={gift} 
-       info={info} />
                     
         </div>
         

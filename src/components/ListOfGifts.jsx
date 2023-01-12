@@ -80,9 +80,10 @@ export function Challenge ()  {
          updateGift={updateGift} handlechange={handlechange} gift={gift}  info={info} 
          />
         <ModalAddItem 
-        setEditDataGift={setEditDataGift}
-        handleSubmit={handleSubmit}
+        editDataGift={editDataGift}
         updateGift={updateGift}
+
+        handleSubmit={handleSubmit}
         handlechange={handlechange}
         gift={gift}
          />

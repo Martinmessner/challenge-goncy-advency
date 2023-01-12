@@ -1,7 +1,7 @@
 import CrossIcon from "../images/Iconsvg";
 import EditNote from "../images/EditGiftIcon"
 
-export const ListMapGifts = ({info, updateGift, filterGift, setEditDataGift}) => {
+export const ListMapGifts = ({info, updateGift, filterGift}) => {
 
     return (
 

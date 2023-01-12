@@ -10,20 +10,21 @@ return (
   <div className="modal__overlay">
     <div className="modal__content">
          {children}
+         
       <button onClick={onRequestClose}>Cerrar</button>
     </div>
   </div>
 );
 }
 
-export function ModalAddItem({handleSubmit, handlechange, gift}) {
+export function ModalAddItem({handleSubmit, handlechange, gift, editDataGift}) {
   const [modalIsOpen, setIsOpen] = useState(false);
 
   return (
 
     <div>
 
-       <button onClick={() => setIsOpen(true)}>Agregar Regalos</button>
+       <button onClick={() => setIsOpen(true)}>{editDataGift ? "Editar Regalo" : "Agregar Regalo"}</button>
 
       <Modal isOpen={modalIsOpen} onRequestClose={() => setIsOpen(false)}>
 

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function Modal({ isOpen, onRequestClose, children }) {
   if (!isOpen) {
@@ -10,7 +10,6 @@ return (
   <div className="modal__overlay">
     <div className="modal__content">
          {children}
-         
       <button onClick={onRequestClose}>Cerrar</button>
     </div>
   </div>
@@ -20,11 +19,19 @@ return (
 export function ModalAddItem({handleSubmit, handlechange, gift, editDataGift}) {
   const [modalIsOpen, setIsOpen] = useState(false);
 
+  useEffect(() => {
+    if (editDataGift) {
+      setIsOpen(true)
+    } else {
+      setIsOpen(false)
+    }
+  }, [editDataGift])
+
   return (
 
     <div>
 
-       <button onClick={() => setIsOpen(true)}>{editDataGift ? "Editar Regalo" : "Agregar Regalo"}</button>
+       <button onClick={() => setIsOpen(true)}>Agregar Regalo </button>
 
       <Modal isOpen={modalIsOpen} onRequestClose={() => setIsOpen(false)}>
 
@@ -44,7 +51,7 @@ export function ModalAddItem({handleSubmit, handlechange, gift, editDataGift}) {
                 <input className='modal__form--input' name="url" value={gift.url}
                  onChange={handlechange} type="url" placeholder="URL de Imagen"/>
 
-                <button className='modal__form--input' type="submit">Agregar Regalos</button>
+                <button className='modal__form--input' type="submit">{editDataGift ? "Editar Regalo" : "Agregar Regalo"}</button>
             </form>
       </Modal>
     </div>

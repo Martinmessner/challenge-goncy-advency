@@ -52,7 +52,8 @@ button, input {
 }
 
 .imagenagregada__enreact {
-  height: 170px;
+  width: 165px;
+  padding-left: .3em;
 }
 
 .modal__overlay {

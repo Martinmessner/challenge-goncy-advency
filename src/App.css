@@ -13,7 +13,8 @@ ul, li {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: .5em 0em;
+  padding: .3em 0em;
+  border: 2px #ff8989 solid;
 }
 
 .contenedor__padre {
@@ -23,8 +24,8 @@ ul, li {
 
 .app {
   text-align: center;
-  color: #dddddd;
-  font-size: 1.3em;
+  color: #ffffff;
+  font-size: 1.4em;
 }
 
 .button__eliminar {
@@ -66,7 +67,9 @@ button, input {
 
 .modal__content {
   background-color: black;
-  padding: 20px;
+  padding: 50px;
+  width: 36em;
+  margin: auto;
 }
 
 .modal__form {
@@ -76,5 +79,20 @@ button, input {
 
 .modal__form--input {
     margin: 4px auto;
-    width: 50%;
+    min-width: 50%;
+}
+
+.estilo-botton {
+  padding: 1em;
+  background-color: #c50b0b;
+  color: #ffeeee;
+  min-width: 10em;
+  border-radius: 35px;
+}
+
+.estilo-botton:hover {
+  transition: .5s all linear;
+  background-color: yellow;
+  color: black;
+  box-shadow: 0 2px 9px 0 rgb(235 235 195 / 84%), 0 17px 50px 0 rgb(208 17 3 / 94%);
 }

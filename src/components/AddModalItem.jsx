@@ -10,13 +10,13 @@ return (
   <div className="modal__overlay">
     <div className="modal__content">
          {children}
-      <button onClick={onRequestClose}>Cerrar</button>
+      <button className='modal__form--input estilo-botton' onClick={onRequestClose}>Cerrar Modal</button>
     </div>
   </div>
 );
 }
 
-export function ModalAddItem({handleSubmit, handlechange, gift, editDataGift, onRequestClose}) {
+export function ModalAddItem({handleSubmit, handlechange, gift, editDataGift}) {
   const [modalIsOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -30,7 +30,7 @@ export function ModalAddItem({handleSubmit, handlechange, gift, editDataGift, on
   return (
     <div>
 
-       <button onClick={() => setIsOpen(true)}>Agregar Regalo </button>
+       <button className='estilo-botton' onClick={() => setIsOpen(true)}>Agregar Regalo </button>
 
       <Modal isOpen={modalIsOpen} onRequestClose={() => setIsOpen(false)}>
 
@@ -50,7 +50,7 @@ export function ModalAddItem({handleSubmit, handlechange, gift, editDataGift, on
                 <input className='modal__form--input' name="url" value={gift.url}
                  onChange={handlechange} type="url" placeholder="URL de Imagen"/>
 
-                <button className='modal__form--input'>
+                <button className='modal__form--input estilo-botton'>
                   {editDataGift ? "Aplicar Cambios para Continuar" : "Agregar Regalo"}
                 </button>
              

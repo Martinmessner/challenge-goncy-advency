@@ -71,22 +71,24 @@ export function Challenge ()  {
     }
 
     return (
+
         <div className="app">
 
-        <ListMapGifts deleteAllGifts={deleteAllGifts} filterGift={filterGift}  handleSubmit={handleSubmit} 
-         updateGift={updateGift} handlechange={handlechange} gift={gift}  info={info} 
-         />
+        <ListMapGifts
+        deleteAllGifts={deleteAllGifts} 
+        filterGift={filterGift} 
+        handleSubmit={handleSubmit} 
+        updateGift={updateGift}
+        handlechange={handlechange} gift={gift}  info={info}    />
+
         <ModalAddItem 
         editDataGift={editDataGift}
         updateGift={updateGift}
-
         handleSubmit={handleSubmit}
         handlechange={handlechange}
-        gift={gift}
-         />
+        gift={gift} />
 
-        <button
-         onClick={deleteAllGifts}>Borrar Todo</button>
+        <button className="estilo-botton" onClick={deleteAllGifts}>Borrar Todo</button>
                     
         </div>
         

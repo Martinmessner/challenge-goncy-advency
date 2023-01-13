@@ -10,7 +10,7 @@ const regalosBase = {
     url : ""
 }
 
-const infoLocalStorage = JSON.parse(localStorage.getItem("info")) || " " || "";
+const infoLocalStorage = JSON.parse(localStorage.getItem("info")) || [];
 
 export function Challenge ()  {
     const [info, setInfo] = useState(infoLocalStorage)
